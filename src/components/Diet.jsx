@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { Link } from "react-router-dom";
 const Diet = () => {
   const apikey = "6d1cb314db1f45c19fb16ff8dce1b1ae";
   const [diet, setDiet] = useState([]);
@@ -38,9 +39,11 @@ const Diet = () => {
             return (
               <SplideSlide key={item.id}>
                 <Card>
-                  <p>{item.title}</p>
-                  <img src={item.image} alt="" />
-                  <Gradient />
+                  <Link to={`/recipeDetails/${item.id}`}>
+                    <p>{item.title}</p>
+                    <img src={item.image} alt="" />
+                    <Gradient />
+                  </Link>
                 </Card>
               </SplideSlide>
             );
