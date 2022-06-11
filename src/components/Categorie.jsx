@@ -1,6 +1,6 @@
 import React from "react";
 import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
-import { GiNoodles, GiChopsticks, GiCroissant } from "react-icons/gi";
+import { GiNoodles, GiCroissant } from "react-icons/gi";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 const Categorie = () => {
@@ -14,7 +14,7 @@ const Categorie = () => {
         <FaHamburger />
         <h4>American</h4>
       </CatLink>
-      <CatLink to={"/cuisine/Japanese"}>
+      <CatLink to={"/cuisine/Moroccan"}>
         <GiNoodles />
         <h4>Thai</h4>
       </CatLink>

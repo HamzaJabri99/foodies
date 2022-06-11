@@ -1,35 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const Search = () => {
   const [searchItems, setSearchItems] = useState("");
+  const navigate = useNavigate();
 
   return (
     <FormStyle
       action=""
       onSubmit={(e) => {
         e.preventDefault();
+        navigate("/search/" + searchItems);
       }}
     >
       <div>
         <FaSearch />
         <input
           value={searchItems}
-          onChange={(e) => setSearchItems(e.target.value)}
+          onChange={(e) => {
+            setSearchItems(e.target.value);
+          }}
           type="text"
           name=""
           id=""
         />
-        <h1>{searchItems}</h1>
       </div>
     </FormStyle>
   );
 };
 const FormStyle = styled.form`
-  margin: 0rem 20rem;
+  width: 100%;
   div {
+    margin: 2rem auto;
     position: relative;
-    width: 100%;
+    width: 80%;
   }
   input {
     border: none;
