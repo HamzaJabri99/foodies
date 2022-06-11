@@ -1,11 +1,11 @@
 import Popular from "../components/Popular";
-import Veggie from "../components/Veggie";
+import Diet from "../components/Diet";
 import React from "react";
 
 const Home = () => {
   return (
     <div>
-      <Veggie />
+      <Diet />
       <Popular />
     </div>
   );

@@ -1,42 +1,40 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-
-const Popular = () => {
+const Diet = () => {
   const apikey = "6d1cb314db1f45c19fb16ff8dce1b1ae";
-  const [popular, setPopular] = useState([]);
+  const [diet, setDiet] = useState([]);
   useEffect(() => {
-    getPopular();
+    fetchData();
   }, []);
-  const getPopular = async () => {
-    const checkStorage = localStorage.getItem("popular");
+  const fetchData = async () => {
+    const checkStorage = localStorage.getItem("diet");
     if (checkStorage) {
-      setPopular(JSON.parse(checkStorage));
+      setDiet(JSON.parse(checkStorage));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apikey}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${apikey}&number=9&tags=vegetarian`
       );
       const data = await api.json();
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
-      setPopular(data.recipes);
+      localStorage.setItem("diet", JSON.stringify(data.recipes));
+      setDiet(data.recipes);
     }
   };
-
   return (
     <div>
       <Wrapper>
-        <h3>Popular Recipes</h3>
+        <h3>Our Diet Recipes</h3>
         <Splide
           options={{
-            perPage: 3,
+            perPage: 4,
             arrows: false,
             pagination: false,
             drag: "free",
             gap: "2rem",
           }}
         >
-          {popular.map((item) => {
+          {diet.map((item) => {
             return (
               <SplideSlide key={item.id}>
                 <Card>
@@ -90,4 +88,5 @@ const Gradient = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
   border-radius: 2rem;
 `;
-export default Popular;
+
+export default Diet;
