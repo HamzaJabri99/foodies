@@ -1,27 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-
+import { motion } from "framer-motion";
 const RecipeDetails = () => {
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState("instructions");
   const apikey = "14d23ac761c54809a4124af39b026db0";
   let params = useParams();
   const fetchDetails = async () => {
-    try {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${apikey}`
-      );
-      const data = await api.json();
-      console.log(data);
-      setDetails(data);
-    } catch (err) {
-      const srry = {
-        id: 1,
-        msg: "sorry we reached our daily limit of requests",
-      };
-      setDetails(err);
-    }
+    const api = await fetch(
+      `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${apikey}`
+    );
+    const data = await api.json();
+    console.log(data);
+    setDetails(data);
   };
   useEffect(() => {
     fetchDetails();
@@ -32,7 +24,12 @@ const RecipeDetails = () => {
       {details.message ? (
         <p>{"sorry we reached our daily limit of requests"}</p>
       ) : (
-        <DetailWrapper>
+        <DetailWrapper
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <div>
             <h2>{details.title}</h2>
             <img src={details.image} alt="" />
@@ -51,22 +48,32 @@ const RecipeDetails = () => {
               Ingredients
             </Button>
             {activeTab === "instructions" && (
-              <div>
+              <motion.div
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                 <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
                 <h1>Instructions</h1>
                 <h3
                   dangerouslySetInnerHTML={{ __html: details.instructions }}
                 ></h3>
-              </div>
+              </motion.div>
             )}
             {activeTab === "ingredients" && (
-              <ul>
+              <motion.ul
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                 {details.extendedIngredients.map((item) => (
                   <li key={item.id}>
                     {item.aisle} <img src={item.image} alt="" />
                   </li>
                 ))}
-              </ul>
+              </motion.ul>
             )}
           </Info>
         </DetailWrapper>
@@ -74,7 +81,7 @@ const RecipeDetails = () => {
     </div>
   );
 };
-const DetailWrapper = styled.div`
+const DetailWrapper = styled(motion.div)`
   margin-top: 2rem;
   margin-bottom: 1rem;
   display: flex;

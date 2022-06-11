@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 const Search = () => {
-  const [searchItems, setSearchItems] = useState("");
+  const [searchItems, setSearchItems] = useState();
   const navigate = useNavigate();
 
   return (
@@ -17,6 +17,7 @@ const Search = () => {
       <div>
         <FaSearch />
         <input
+          placeholder="Search a food,categorie,recipe etc..."
           value={searchItems}
           onChange={(e) => {
             setSearchItems(e.target.value);
