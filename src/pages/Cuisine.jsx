@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 const Cuisine = () => {
   const [cuisine, setCuisine] = useState([]);
   let type = useParams();
-  const apikey = "6d1cb314db1f45c19fb16ff8dce1b1ae";
   const getCuisine = async (name) => {
     const api = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=9&cuisine=${name}`

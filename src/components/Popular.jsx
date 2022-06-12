@@ -4,7 +4,6 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { Link } from "react-router-dom";
 const Popular = () => {
-  const apikey = "6d1cb314db1f45c19fb16ff8dce1b1ae";
   const [popular, setPopular] = useState([]);
   useEffect(() => {
     getPopular();

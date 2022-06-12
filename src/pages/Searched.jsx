@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Searched = () => {
   const [searchedItem, setSearchedItem] = useState([]);
   let type = useParams();
-  const apikey = "6d1cb314db1f45c19fb16ff8dce1b1ae";
   const getSearchedItem = async (name) => {
     const api = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=9&query=${name}`

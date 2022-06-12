@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 const RecipeDetails = () => {
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState("instructions");
-  const apikey = "14d23ac761c54809a4124af39b026db0";
   let params = useParams();
   const fetchDetails = async () => {
     const api = await fetch(
