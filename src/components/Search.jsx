@@ -19,9 +19,7 @@ const Search = () => {
         <input
           placeholder="Search a food,categorie,recipe etc..."
           value={searchItems}
-          onChange={(e) => {
-            setSearchItems(e.target.value);
-          }}
+          onChange={(e) => setSearchItems(e.target.value)}
           type="text"
           name=""
           id=""

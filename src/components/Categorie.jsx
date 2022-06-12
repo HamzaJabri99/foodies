@@ -14,7 +14,7 @@ const Categorie = () => {
         <FaHamburger />
         <h4>American</h4>
       </CatLink>
-      <CatLink to={"/cuisine/Moroccan"}>
+      <CatLink to={"/cuisine/Thai"}>
         <GiNoodles />
         <h4>Thai</h4>
       </CatLink>

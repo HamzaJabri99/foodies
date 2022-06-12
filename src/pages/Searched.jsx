@@ -19,7 +19,7 @@ const Searched = () => {
       {searchedItem.map((item) => {
         return (
           <Card key={item.id}>
-            <Link to={`/recipeDetails/${type.id}`}>
+            <Link to={`/recipeDetails/${item.id}`}>
               <img src={item.image} alt="" />
               <h4>{item.title}</h4>
             </Link>
