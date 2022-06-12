@@ -15,7 +15,7 @@ const Diet = () => {
       setDiet(JSON.parse(checkStorage));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apikey}&number=9&tags=vegetarian`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegetarian`
       );
       const data = await api.json();
       localStorage.setItem("diet", JSON.stringify(data.recipes));
